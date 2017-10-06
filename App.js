@@ -23,8 +23,8 @@ export default class App extends Component {
 
   camera() {
     ImagePicker.openCamera({
-      width: 1000, // desired crop width
-      height: 1000, // desired crop height
+      width: 1000, // desired crop width <-- CUSTOMIZE
+      height: 1000, // desired crop height <-- CUSTOMIZE
       includeBase64: true,
       cropping: true
     }).then(image => {
@@ -34,7 +34,7 @@ export default class App extends Component {
   }
 
   upload () { 
-    const url = 'http://192.168.0.2:6000' // IP/URL of server upload script
+    const url = 'http://192.168.0.2:6000' // IP/URL of server upload script <-- CUSTOMIZE
 
     console.log("UPLOADING...")
     console.log(this.state.image)
@@ -43,9 +43,7 @@ export default class App extends Component {
     RNFetchBlob.config({timeout: 10000}).fetch('POST', url, {
       'Content-Type' : 'multipart/form-data',
     }, [
-      // element with property `filename` will be transformed into `file` in form data
       { name : 'file', filename : 'file', type: this.state.image.mime, data: RNFetchBlob.wrap(this.state.image.path) } // this.state.image.data},
-      // don't send b64 if large file...
     ]).uploadProgress((written, total) => {
       console.log('uploaded', written / total)
       const progress = parseInt((written / total) * 100)
@@ -58,6 +56,7 @@ export default class App extends Component {
     }).catch((err) => {
       console.log('Could not upload')
       console.error(err)
+      this.setState({ uploading: false })
       // ...
     })
   }

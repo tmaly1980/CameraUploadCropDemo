@@ -21,6 +21,21 @@ code integration.
 
 You may need to enable 'Arbitrary Loads' to your Info.plist under 'App Transport Security' if you plan on using non-secure http:// addresses.
 
+You'll probably want to customize the IP address + port for the remote server inside the upload() method:
+
+```
+  upload () { 
+    const url = 'http://192.168.0.2:6000' // IP/URL of server upload script <-- CUSTOMIZE
+```
+
+As well as the image size after cropping:
+```
+  camera() {
+    ImagePicker.openCamera({
+      width: 1000, // desired crop width <-- CUSTOMIZE
+      height: 1000, // desired crop height <-- CUSTOMIZE
+```
+
 ## Upload demo server
 A demo upload backend has been provided in `phpUpload`. Simply run it from your top level folder via: `php -S 192.168.0.2:6000 -t phpUpload` 
 (with your actual IP address provided)
