@@ -1,0 +1,3 @@
+rootProject.name = 'CameraUploadCropDemo41'
+
+include ':app'
