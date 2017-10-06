@@ -18,14 +18,13 @@ export default class App extends Component {
   state = {
     image: null,
     progress: null,
-    uploading: false,
-    uploaded: true
+    uploading: false
   }
 
   camera() {
     ImagePicker.openCamera({
-      width: 200, // desired crop width
-      height: 200, // desired crop height
+      width: 1000, // desired crop width
+      height: 1000, // desired crop height
       includeBase64: true,
       cropping: true
     }).then(image => {
@@ -39,6 +38,7 @@ export default class App extends Component {
 
     console.log("UPLOADING...")
     console.log(this.state.image)
+    this.setState({ uploading: true })
 
     RNFetchBlob.config({timeout: 10000}).fetch('POST', url, {
       'Content-Type' : 'multipart/form-data',
