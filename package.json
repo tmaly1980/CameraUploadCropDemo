@@ -7,8 +7,11 @@
 		"test": "jest"
 	},
 	"dependencies": {
+		"js-base64": "^2.3.2",
 		"react": "~15.4.0-rc.4",
-		"react-native": "0.41.0"
+		"react-native": "0.41.0",
+		"react-native-fs": "^2.8.1",
+		"react-native-image-crop-picker": "^0.17.2"
 	},
 	"devDependencies": {
 		"babel-jest": "21.2.0",
